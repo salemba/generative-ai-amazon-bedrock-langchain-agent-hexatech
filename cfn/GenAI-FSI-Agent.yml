@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "GenAI Financial Services Agent powered by Amazon Lex, Amazon Bedrock, Amazon DynamoDB, and Amazon Kendra"
 Metadata:
-  LICENSE: >-
+  LICENSE: 
     Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -324,7 +324,7 @@ Resources:
             Resource: '*'
 
   KendraIndex:
-    Type: AWS::Kendra::Index
+    Type: 'AWS::Kendra::Index'
     Properties:
       Edition: DEVELOPER_EDITION
       Name: !Sub ${AWS::StackName}-KendraIndex
@@ -370,7 +370,7 @@ Resources:
 
   KendraS3DataSource:
     DependsOn: KendraIndex
-    Type: AWS::Kendra::DataSource
+    Type: 'AWS::Kendra::DataSource'
     Properties:
       Name: !Sub ${AWS::StackName}-S3DataSource
       Type: S3
@@ -429,7 +429,7 @@ Resources:
 
   LexBot:
     DependsOn: LexBotRole
-    Type: AWS::Lex::Bot
+    Type: 'AWS::Lex::Bot'
     Properties:
         Name: !Sub ${AWS::StackName}-FSI-Agent
         BotFileS3Location: 
